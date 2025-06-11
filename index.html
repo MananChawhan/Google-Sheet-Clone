@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Google Sheet Clone</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="toolbar">
+    <button class="toolbar-icon-button" onclick="document.execCommand('copy')">©</button>
+    <button class="toolbar-icon-button" onclick="document.execCommand('cut')">✂</button>
+    <button class="toolbar-icon-button" onclick="document.execCommand('paste')">📓</button>
+
+    <select id="fontSelect">
+      <option value="monospace">MonoSpace</option>
+      <option value="Arial">Arial</option>
+      <option value="Verdana">Verdana</option>
+    </select>
+
+    <select id="fontSizeSelect">
+      <option value="1">10</option>
+      <option value="2">12</option>
+      <option value="3">14</option>
+      <option value="4">16</option>
+      <option value="5">18</option>
+    </select>
+
+    <button onclick="format('bold')">B</button>
+    <button onclick="format('italic')">I</button>
+    <button onclick="format('underline')">U</button>
+    <button onclick="format('justifyLeft')">⬅</button>
+    <button onclick="format('justifyCenter')">↔</button>
+    <button onclick="format('justifyRight')">➡</button>
+    <button onclick="format('removeFormat')">❌</button>
+
+    <label>Text:
+      <input type="color" onchange="applyColor(this.value, 'color')"/>
+    </label>
+    <label>Bg:
+      <input type="color" onchange="applyColor(this.value, 'backgroundColor')"/>
+    </label>
+
+    <button class="new-sheet-btn" onclick="addNewSheet()">+ New Sheet</button>
+    <button onclick="exportToCSV()">⬇ Export CSV</button>
+    <input type="file" id="importFile" accept=".csv"/>
+  </div>
+
+  <div class="sheet-container" id="sheetContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
